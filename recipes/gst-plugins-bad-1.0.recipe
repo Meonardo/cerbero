@@ -109,6 +109,7 @@ class Recipe(custom.GStreamer):
         'libgstvulkan-1.0',
         'libgstwebrtc-1.0',
         'libgstwebrtcnice-1.0',
+        'libgstrockchipmpp',
     ]
 
     files_plugins_devel = [
@@ -139,6 +140,7 @@ class Recipe(custom.GStreamer):
         '%(libdir)s/pkgconfig/gstreamer-vulkan-1.0.pc',
         '%(libdir)s/pkgconfig/gstreamer-webrtc-1.0.pc',
         '%(libdir)s/pkgconfig/gstreamer-webrtc-nice-1.0.pc',
+        '%(libdir)s/gstreamer-1.0/pkgconfig/libgstrockchipmpp.pc',
     ]
 
     files_plugins_core = [
@@ -349,6 +351,7 @@ class Recipe(custom.GStreamer):
              '%(libdir)s/gstreamer-1.0/libgstsrtp%(mext)s',
              '%(libdir)s/gstreamer-1.0/libgstsrt%(mext)s',
              '%(libdir)s/gstreamer-1.0/libgstwebrtc%(mext)s',
+             '%(libdir)s/gstreamer-1.0/libgstrockchipmpp%(mext)s',
     ]
 
     files_plugins_net_devel = [
@@ -363,6 +366,7 @@ class Recipe(custom.GStreamer):
              '%(libdir)s/gstreamer-1.0/libgstsrtp.a', '%(libdir)s/gstreamer-1.0/libgstsrtp.la',
              '%(libdir)s/gstreamer-1.0/libgstsrt.a', '%(libdir)s/gstreamer-1.0/libgstsrt.la',
              '%(libdir)s/gstreamer-1.0/libgstwebrtc.a', '%(libdir)s/gstreamer-1.0/libgstwebrtc.la',
+             '%(libdir)s/gstreamer-1.0/libgstrockchipmpp.a', '%(libdir)s/gstreamer-1.0/libgstrockchipmpp.la',
     ]
 
     files_plugins_net_restricted = [

@@ -195,6 +195,12 @@ def main():
         print('Outputting profiling information to {!r}'.format(pfile))
         cProfile.runctx('Main(sys.argv[1:])', globals(), locals(), filename=pfile)
     else:
+        # os.environ['CERBERO_UNINSTALLED'] = '1'
+        # curdir = os.path.dirname(__file__)
+        # root_dir = os.path.abspath(curdir)
+        # sys.path.insert(0, root_dir)
+        # args = ['-c', root_dir+'/../config/rockchipconf.cbc', '-c', root_dir+'/../config/cross-android-arm64.cbc', 'package', 'gstreamer-1.0']
+        # Main(args)
         Main(sys.argv[1:])
 
 

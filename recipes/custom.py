@@ -64,7 +64,7 @@ class GStreamer(recipe.Recipe):
             self.remotes.update(self.config.recipes_remotes.get('gstreamer-1.0', {}))
             # gst-integrations-testsuite medias folder is the only submodule in GStreamer repository,
             # disable the submodule to avoid to download more than 500MB of test medias.
-            self.use_submodules = False
+            self.use_submodules = True
 
     def enable_plugin(self, plugin, category, variant=None, option=None, dep=None):
         if option is None:

@@ -1,0 +1,2 @@
+recipes_remotes = {'gstreamer-1.0': {'custom-remote': 'https://github.com/Meonardo/gstreamer'}}
+recipes_commits = {'gstreamer-1.0': 'custom-remote/main'}
