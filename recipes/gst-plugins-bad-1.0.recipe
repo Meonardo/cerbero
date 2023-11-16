@@ -140,7 +140,7 @@ class Recipe(custom.GStreamer):
         '%(libdir)s/pkgconfig/gstreamer-vulkan-1.0.pc',
         '%(libdir)s/pkgconfig/gstreamer-webrtc-1.0.pc',
         '%(libdir)s/pkgconfig/gstreamer-webrtc-nice-1.0.pc',
-        '%(libdir)s/gstreamer-1.0/pkgconfig/libgstrockchipmpp.pc',
+        '%(libdir)s/gstreamer-1.0/pkgconfig/gstrockchipmpp.pc',
     ]
 
     files_plugins_core = [

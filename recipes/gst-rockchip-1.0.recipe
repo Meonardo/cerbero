@@ -25,7 +25,7 @@ class Recipe(custom.GStreamer):
         '%(libdir)s/gstreamer-1.0/libgstrockchipmpp.a'
     ]
     files_devel = [
-        '%(libdir)s/pkgconfig/gstreamer-1.0/pkgconfig/libgstrockchipmpp.pc',
+        '%(libdir)s/pkgconfig/gstreamer-1.0/pkgconfig/gstrockchipmpp.pc',
     ]
 
 
