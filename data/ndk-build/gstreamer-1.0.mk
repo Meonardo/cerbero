@@ -197,11 +197,11 @@ ifeq ($(GSTREAMER_INCLUDE_CA_CERTIFICATES),yes)
 $(GSTREAMER_ANDROID_SO): copycacertificatesres_$(TARGET_ARCH_ABI)
 endif
 
-delsharedlib_$(TARGET_ARCH_ABI): PRIV_B_DIR := $(GSTREAMER_BUILD_DIR)
-delsharedlib_$(TARGET_ARCH_ABI):
-	$(hide)$(call host-rm,$(prebuilt))
-	$(hide)$(foreach path,$(wildcard $(PRIV_B_DIR)/sed*), $(call host-rm,$(path)) && ) echo Done rm
-$(LOCAL_INSTALLED): delsharedlib_$(TARGET_ARCH_ABI)
+# delsharedlib_$(TARGET_ARCH_ABI): PRIV_B_DIR := $(GSTREAMER_BUILD_DIR)
+# delsharedlib_$(TARGET_ARCH_ABI):
+# 	$(hide)$(call host-rm,$(prebuilt))
+# 	$(hide)$(foreach path,$(wildcard $(PRIV_B_DIR)/sed*), $(call host-rm,$(path)) && ) echo Done rm
+# $(LOCAL_INSTALLED): delsharedlib_$(TARGET_ARCH_ABI)
 
 # Generates a source file that declares and registers all the required plugins
 # about the sed command, android-studio doesn't seem to like line continuation characters when executing shell commands
