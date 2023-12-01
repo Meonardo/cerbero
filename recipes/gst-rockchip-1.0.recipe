@@ -11,7 +11,7 @@ class Recipe(custom.GStreamer):
                      'rkximage': 'disabled',
                      'rockchipmpp': 'enabled',
                      'kmssrc': 'disabled',
-                     'rga': 'disabled',
+                     'rga': 'enabled',
                      'vpxalphadec': 'enabled'}
     deps = ['gstreamer-1.0', 
             'gst-plugins-base-1.0',  
