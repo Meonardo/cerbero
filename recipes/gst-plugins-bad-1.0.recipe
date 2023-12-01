@@ -106,6 +106,7 @@ class Recipe(custom.GStreamer):
         'libgstvulkan-1.0',
         'libgstwebrtc-1.0',
         'libgstwebrtcnice-1.0',
+        'libgstrockchipmpp',
     ]
 
     files_plugins_devel = [
@@ -136,6 +137,9 @@ class Recipe(custom.GStreamer):
         'lib/pkgconfig/gstreamer-vulkan-1.0.pc',
         'lib/pkgconfig/gstreamer-webrtc-1.0.pc',
         'lib/pkgconfig/gstreamer-webrtc-nice-1.0.pc',
+        'lib/pkgconfig/rockchip_mpp.pc',
+        'lib/pkgconfig/rockchip_vpu.pc',
+        'lib/gstreamer-1.0/pkgconfig/gstrockchipmpp.pc',
     ]
 
     files_plugins_effects = [
@@ -239,6 +243,7 @@ class Recipe(custom.GStreamer):
              'lib/gstreamer-1.0/libgstspandsp%(mext)s',
              'lib/gstreamer-1.0/libgstsbc%(mext)s',
              'lib/gstreamer-1.0/libgstzbar%(mext)s',
+             'lib/gstreamer-1.0/libgstrockchipmpp%(mext)s',
     ]
 
     files_plugins_codecs_devel = [
@@ -272,6 +277,7 @@ class Recipe(custom.GStreamer):
              'lib/gstreamer-1.0/libgstspandsp.a', 'lib/gstreamer-1.0/libgstspandsp.la',
              'lib/gstreamer-1.0/libgstsbc.a', 'lib/gstreamer-1.0/libgstsbc.la',
              'lib/gstreamer-1.0/libgstzbar.a', 'lib/gstreamer-1.0/libgstzbar.la',
+             'lib/gstreamer-1.0/libgstrockchipmpp.a', 'lib/gstreamer-1.0/libgstrockchipmpp.la',
     ]
 
     platform_files_plugins_codecs = {
