@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.recipe": "python",
+        "*.cbc": "python",
+        "gstdmabuf.h": "c"
+    }
+}

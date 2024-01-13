@@ -1,5 +1,6 @@
 # -*- Mode: Python -*- vi:si:et:sw=4:sts=4:ts=4:syntax=python
 
+from cerbero.enums import DistroVersion
 from cerbero.tools.libtool import LibtoolLibrary
 
 class Recipe(recipe.Recipe):
@@ -11,7 +12,7 @@ class Recipe(recipe.Recipe):
     url = 'https://freedesktop.org/software/pulseaudio/%(name)s/%(name)s-%(version)s.tar.xz'
     tarball_checksum = '4b46a7f91a5d255c2451f9862c86e2a5de904902724b4bba1fd23e2854f21df5'
 
-    platform_deps = {Platform.ANDROID: ['gnustl']}
+    # platform_deps = {Platform.ANDROID: ['gnustl']}
 
     patches = [ 'webrtc-audio-processing/0000-Add-sal.h-as-it-s-missing-in-cerbero-mingw.patch',
                 'webrtc-audio-processing/0000-Add-fix_interlocked_exchange_pointer_win.h.patch',
@@ -52,7 +53,13 @@ class Recipe(recipe.Recipe):
             # that defines -mfpu=vfp... plus webrtc-audio-processing build
             # system is doing it wrong, as it should add -mfpu=neon only for
             # the files that contains neon intrinsic.
-            self.meson_options['gnustl'] = 'enabled'
+            android_api = DistroVersion.get_android_api_version(self.config.target_distro_version)
+            if android_api < 24:
+                # -D_FILE_OFFSET_BITS=64 is broken with Android API < 24 for C++
+                # stdio, and enabling Android API 24 breaks the gst-examples build,
+                # so disable this for now.
+                self.append_env('CXXFLAGS', '-U_FILE_OFFSET_BITS')
+
         elif self.config.target_platform == Platform.WINDOWS:
             # This recipe requires at least Windows Vista
             flags = ('-UWINVER', '-U_WIN32_WINNT', '-DWINVER=0x0600', '-D_WIN32_WINNT=0x0600')
@@ -63,7 +70,7 @@ class Recipe(recipe.Recipe):
     def post_install(self):
         dependency_libs = []
         if self.config.target_platform == Platform.ANDROID:
-            dependency_libs += ['gnustl', '-llog']
+            dependency_libs += ['-llog']
 
         lib = LibtoolLibrary('webrtc_audio_processing', None, None, None, self.config.libdir,
                 self.config.target_platform, deps=dependency_libs)

@@ -31,6 +31,7 @@ class Recipe(recipe.Recipe):
     files_devel = ['include/wavpack', 'lib/pkgconfig/wavpack.pc']
 
     def prepare(self):
+        self.deps.append('libiconv')
         if self.config.target_arch not in [Architecture.X86, Architecture.X86_64, Architecture.ARMv7, Architecture.ARMv7S] or self.config.target_platform == Platform.IOS:
             self.configure_options += ' -DWAVPACK_ENABLE_ASM=OFF '
         # We only want static libs on iOS and Android
@@ -39,6 +40,8 @@ class Recipe(recipe.Recipe):
             self.library_type = LibraryType.SHARED
         else:
             self.library_type = LibraryType.STATIC
+        if self.config.cross_compiling() and self.config.target_platform not in [Platform.WINDOWS, Platform.DARWIN]:
+            self.configure_options += ' -DCOMPILER_SUPPORTS_SYMBOL_MAPS_EXITCODE=0'
 
     async def extract(self):
         await super().extract()
@@ -68,8 +71,6 @@ class Recipe(recipe.Recipe):
 
     def post_install(self):
         deps = ['-lm']
-        if self.config.target_platform == Platform.ANDROID:
-            deps.append('gnustl')
         libtool_la = LibtoolLibrary('wavpack', None, None, None, self.config.libdir,
                 self.config.target_platform, deps)
         libtool_la.save()
